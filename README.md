@@ -1,10 +1,10 @@
 #### ⚠️ Do not download modules from 3rd party sources like random websites you found on Google. Only use this repository. I am not responsible for anything they may contain.
 
-# ReVanced Magisk Module
-[![Build Modules](https://github.com/E85Addict/revanced-magisk-module/actions/workflows/build.yml/badge.svg)](https://github.com/E85Addict/revanced-magisk-module/actions/workflows/build.yml)
-[![CI](https://github.com/E85Addict/revanced-magisk-module/actions/workflows/ci.yml/badge.svg?event=schedule)](https://github.com/E85Addict/revanced-magisk-module/actions/workflows/ci.yml)
+# ReVanced Extended Magisk Module
+[![Build Modules](https://github.com/E85Addict/revanced-extended-builds/actions/workflows/build.yml/badge.svg)](https://github.com/E85Addict/revanced-extended-builds/actions/workflows/build.yml)
+[![CI](https://github.com/E85Addict/revanced-extended-builds/actions/workflows/ci.yml/badge.svg?event=schedule)](https://github.com/E85Addict/revanced-extended-builds/actions/workflows/ci.yml)
 
-Get the [latest CI release](https://github.com/E85Addict/revanced-magisk-module/releases).
+Get the [latest CI release](https://github.com/E85Addict/revanced-extended-builds/releases).
 
 [**mindetach module**](https://github.com/j-hc/mindetach-magisk) in the releases section detaches YouTube and YouTube Music from Play Store and blocks it from updating them.
 
@@ -24,10 +24,10 @@ Get the [latest CI release](https://github.com/E85Addict/revanced-magisk-module/
 #### **Note that the [CI workflow](../../actions/workflows/ci.yml) is scheduled to build the modules and APKs everyday using GitHub Actions if there is a change in ReVanced patches. You may want to disable it.**
 
 ## To include/exclude patches
-[**See the list of patches**](https://github.com/revanced/revanced-patches#-list-of-available-patches)
+[**See the list of patches**](https://github.com/inotia00/revanced-patches/tree/revanced-extended#-patches)
 
  * Star the repo :eyes:
- * [Fork the repo](https://github.com/E85Addict/revanced-magisk-module/fork) or use it as a template
+ * [Fork the repo](https://github.com/E85Addict/revanced-extended-builds/fork) or use it as a template
  * Edit the options in [`config.toml`](./config.toml)
  * Run the build [workflow](../../actions/workflows/build.yml)
  * Grab your modules and APKs from [releases](../../releases)
@@ -40,7 +40,7 @@ To be able to use non-root variants of YouTube and YT Music, install [Vanced Mic
 Make sure you have JDK 17 installed. Then run:
 
 ```console
-$ git clone --recurse-submodules https://github.com/E85Addict/revanced-magisk-module
-$ cd revanced-magisk-module
+$ git clone --recurse-submodules https://github.com/E85Addict/revanced-extended-builds
+$ cd revanced-extended-builds
 $ ./build.sh
 ```

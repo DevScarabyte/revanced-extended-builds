@@ -100,6 +100,6 @@ music_arm64_mode=$(toml_get "$(toml_get_table "Music-arm64")" "build-mode") || m
 if [ "$youtube_mode" != module ] || [ "$music_arm_mode" != module ] || [ "$music_arm64_mode" != module ]; then
 	log "\nInstall [Vanced Microg](https://github.com/inotia00/VancedMicroG/releases) to be able to use non-root YouTube or Music"
 fi
-log "\n[revanced-magisk-module](https://github.com/E85Addict/revanced-magisk-module)"
+log "\n[revanced-extended-builds](https://github.com/E85Addict/revanced-extended-builds)"
 
 echo "Done"

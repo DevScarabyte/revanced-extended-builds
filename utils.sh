@@ -11,7 +11,7 @@ if [ "${GITHUB_TOKEN+x}" ]; then
 else
 	GH_AUTH_HEADER=""
 fi
-GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-"E85Addict/revanced-magisk-module"}
+GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-"E85Addict/revanced-extended-builds"}
 NEXT_VER_CODE=${NEXT_VER_CODE:-$(date +'%Y%m%d')}
 WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0"
 DRYRUN=false
@@ -46,11 +46,11 @@ get_prebuilts() {
 	RV_CLI_JAR="${TEMP_DIR}/${rv_cli_url##*/}"
 	log "CLI: ${rv_cli_url##*/}"
 
-	rv_integrations_url=$(gh_req https://api.github.com/repos/revanced/revanced-integrations/releases/latest - | json_get 'browser_download_url')
+	rv_integrations_url=$(gh_req https://api.github.com/repos/inotia00/revanced-integrations/releases/latest - | json_get 'browser_download_url')
 	RV_INTEGRATIONS_APK="${TEMP_DIR}/${rv_integrations_url##*/}"
 	log "Integrations: ${rv_integrations_url##*/}"
 
-	rv_patches=$(gh_req https://api.github.com/repos/E85Addict/revanced-patches/releases/latest -)
+	rv_patches=$(gh_req https://api.github.com/repos/inotia00/revanced-patches/releases/latest -)
 	rv_patches_changelog=$(echo "$rv_patches" | json_get 'body' | sed 's/\(\\n\)\+/\\n/g')
 	rv_patches_dl=$(json_get 'browser_download_url' <<<"$rv_patches")
 	RV_PATCHES_JSON="${TEMP_DIR}/patches-$(json_get 'tag_name' <<<"$rv_patches").json"
@@ -71,7 +71,7 @@ get_cmpr() {
 	dl_if_dne "${MODULE_TEMPLATE_DIR}/bin/arm/cmpr" "https://github.com/E85Addict/cmpr/releases/latest/download/cmpr-armeabi-v7a"
 }
 
-abort() { echo >&2 "abort: $1" && exit 1; }
+abort() { echo "abort: $1" && exit 1; }
 
 set_prebuilts() {
 	[ -d "$TEMP_DIR" ] || abort "${TEMP_DIR} directory could not be found"
@@ -284,11 +284,11 @@ build_rv() {
 
 		version=${version// /-}
 		local stock_apk="${TEMP_DIR}/${pkg_name}-stock-${version}-${arch}.apk"
-		local apk_output="${BUILD_DIR}/${app_name_l}-revanced-v${version}-${arch}.apk"
+		local apk_output="${BUILD_DIR}/${app_name_l}-revanced-extended-v${version}-${arch}.apk"
 		if [ "${args[microg_patch]}" ]; then
-			local patched_apk="${TEMP_DIR}/${app_name_l}-revanced-${version}-${arch}-${build_mode}.apk"
+			local patched_apk="${TEMP_DIR}/${app_name_l}-revanced-extended-${version}-${arch}-${build_mode}.apk"
 		else
-			local patched_apk="${TEMP_DIR}/${app_name_l}-revanced-${version}-${arch}.apk"
+			local patched_apk="${TEMP_DIR}/${app_name_l}-revanced-extended-${version}-${arch}.apk"
 		fi
 		if [ ! -f "$stock_apk" ]; then
 			if [ "$dl_from" = APKMirror ]; then
@@ -336,13 +336,13 @@ build_rv() {
 		local upj
 		upj=$([ "${arch}" = "all" ] && echo "${app_name_l}-update.json" || echo "${app_name_l}-${arch}-update.json")
 		module_prop "${args[module_prop_name]}" \
-			"${app_name} ReVanced" \
+			"${app_name} ReVanced Extended" \
 			"$version" \
-			"${app_name} ReVanced Magisk module" \
+			"${app_name} ReVanced Extended Magisk module" \
 			"https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/update/${upj}" \
 			"$base_template"
 
-		local module_output="${app_name_l}-revanced-magisk-v${version}-${arch}.zip"
+		local module_output="${app_name_l}-revanced-extended-magisk-v${version}-${arch}.zip"
 		zip_module "$patched_apk" "$module_output" "$stock_apk" "$pkg_name" "$base_template"
 
 		echo "Built ${app_name} (${arch}) (root): '${BUILD_DIR}/${module_output}'"
