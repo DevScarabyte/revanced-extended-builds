@@ -280,7 +280,7 @@ build_rv() {
 	else
 		grep -q "${app_name} (${arch}):" build.md || log "${app_name} (${arch}): ${version}\ndownloaded from: [$dl_from - ${app_name} (${arch})]($dl_url)"
 	fi
-	if jq -r ".[] | select(.compatiblePackages[].name==\"${pkg_name}\") | .dependencies[]" "$RV_PATCHES_JSON" | grep -qFx integrations; then
+	if jq -r ".[] | select(.compatiblePackages[].name==\"${pkg_name}\") | .dependencies[]" "$RV_PATCHES_JSON" | grep -qFx -e integrations -e music-integrations; then
 		p_patcher_args+=" -m ${RV_INTEGRATIONS_APK}"
 	fi
 
