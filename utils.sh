@@ -38,20 +38,20 @@ toml_get() {
 get_prebuilts() {
 	echo "Getting prebuilts"
 	local rv_cli_url rv_integrations_url rv_patches rv_patches_changelog rv_patches_dl rv_patches_url
-	rv_cli_url=$(gh_req https://api.github.com/repos/E85Addict/revanced-cli/releases/latest - | json_get 'browser_download_url')
-	RV_CLI_JAR="${TEMP_DIR}/${rv_cli_url##*/}"
+	rv_cli_url=$(gh_req "https://api.github.com/repos/E85Addict/revanced-cli/releases/latest" - | json_get 'browser_download_url')
+	RV_CLI_JAR="${PREBUILTS_DIR}/${rv_cli_url##*/}"
 	log "CLI: ${rv_cli_url##*/}"
 
-	rv_integrations_url=$(gh_req https://api.github.com/repos/inotia00/revanced-integrations/releases/latest - | json_get 'browser_download_url')
-	RV_INTEGRATIONS_APK="${TEMP_DIR}/${rv_integrations_url##*/}"
+	rv_integrations_url=$(gh_req "https://api.github.com/repos/${INTEGRATIONS_SRC}/releases/latest" - | json_get 'browser_download_url')
+	RV_INTEGRATIONS_APK="${PREBUILTS_DIR}/${rv_integrations_url##*/}"
 	log "Integrations: ${rv_integrations_url##*/}"
 
-	rv_patches=$(gh_req https://api.github.com/repos/inotia00/revanced-patches/releases/latest -)
+	rv_patches=$(gh_req "https://api.github.com/repos/${PATCHES_SRC}/releases/latest" -)
 	rv_patches_changelog=$(echo "$rv_patches" | json_get 'body' | sed 's/\(\\n\)\+/\\n/g')
 	rv_patches_dl=$(json_get 'browser_download_url' <<<"$rv_patches")
-	RV_PATCHES_JSON="${TEMP_DIR}/patches-$(json_get 'tag_name' <<<"$rv_patches").json"
+	RV_PATCHES_JSON="${PREBUILTS_DIR}/patches-$(json_get 'tag_name' <<<"$rv_patches").json"
 	rv_patches_url=$(grep 'jar' <<<"$rv_patches_dl")
-	RV_PATCHES_JAR="${TEMP_DIR}/${rv_patches_url##*/}"
+	RV_PATCHES_JAR="${PREBUILTS_DIR}/${rv_patches_url##*/}"
 	log "Patches: ${rv_patches_url##*/}"
 	log "\n${rv_patches_changelog//# [/### [}\n"
 
@@ -153,7 +153,7 @@ get_apkmirror_vers() {
 	vers=$(sed -n 's;.*Version:</span><span class="infoSlide-value">\(.*\) </span>.*;\1;p' <<<"$apkm_resp")
 	if [ "$allow_alpha_version" = false ]; then
 		local IFS=$'\n'
-		vers=$(grep -i -v "\(beta\|alpha\)" <<<"$vers")
+		vers=$(grep -iv "\(beta\|alpha\)" <<<"$vers")
 		local r_vers=()
 		for v in $vers; do
 			grep -iq "${v} \(beta\|alpha\)" <<<"$apkm_resp" || r_vers+=("$v")
@@ -280,7 +280,7 @@ build_rv() {
 	else
 		grep -q "${app_name} (${arch}):" build.md || log "${app_name} (${arch}): ${version}\ndownloaded from: [$dl_from - ${app_name} (${arch})]($dl_url)"
 	fi
-	if jq -r ".[] | select(.compatiblePackages[].name==\"${pkg_name}\") | .dependencies[]" "$RV_PATCHES_JSON" | grep -qFx -e integrations -e music-integrations; then
+	if jq -r ".[] | select(.compatiblePackages[].name==\"${pkg_name}\") | .dependencies[]" "$RV_PATCHES_JSON" | grep -qF integrations; then
 		p_patcher_args+=" -m ${RV_INTEGRATIONS_APK}"
 	fi
 
@@ -294,15 +294,20 @@ build_rv() {
 	for build_mode in "${build_mode_arr[@]}"; do
 		patcher_args=$p_patcher_args
 		echo "Building '${app_name}' (${arch}) in '$build_mode' mode"
-		if [ "${args[microg_patch]}" ]; then
-			local patched_apk="${TEMP_DIR}/${app_name_l}-revanced-extended-${version}-${arch}-${build_mode}.apk"
+		local microg_patch
+		microg_patch=$(jq -r ".[] | select(.compatiblePackages[].name==\"${pkg_name}\") | .name" "$RV_PATCHES_JSON" | grep -F microg || :)
+		if [ "$microg_patch" ]; then
+			if [[ "${args[patcher_args]}" = *"$microg_patch"* ]]; then
+				abort "ERROR: Do not include microg in included or excluded patches list"
+			fi
+			local patched_apk="${TEMP_DIR}/${app_name_l}-${RV_BRAND_F}-${version}-${arch}-${build_mode}.apk"
 			if [ "$build_mode" = apk ]; then
-				patcher_args+=" -i ${args[microg_patch]}"
+				patcher_args+=" -i ${microg_patch}"
 			elif [ "$build_mode" = module ]; then
-				patcher_args+=" -e ${args[microg_patch]}"
+				patcher_args+=" -e ${microg_patch}"
 			fi
 		else
-			local patched_apk="${TEMP_DIR}/${app_name_l}-revanced-extended-${version}-${arch}.apk"
+			local patched_apk="${TEMP_DIR}/${app_name_l}-${RV_BRAND_F}-${version}-${arch}.apk"
 		fi
 		if [ "$build_mode" = module ]; then
 			patcher_args+=" --unsigned --rip-lib arm64-v8a --rip-lib armeabi-v7a"
@@ -314,43 +319,33 @@ build_rv() {
 			fi
 		fi
 		if [ "$build_mode" = apk ]; then
-			local apk_output="${BUILD_DIR}/${app_name_l}-revanced-extended-v${version}-${arch}.apk"
+			local apk_output="${BUILD_DIR}/${app_name_l}-${RV_BRAND_F}-v${version}-${arch}.apk"
 			cp -f "$patched_apk" "$apk_output"
 			echo "Built ${app_name} (${arch}) (non-root): '${apk_output}'"
 			continue
 		fi
-		local base_template upj module_prop_name
+		local base_template upj
 		base_template=$(mktemp -d -p $TEMP_DIR)
 		cp -a $MODULE_TEMPLATE_DIR/. "$base_template"
 		if [ "$BUILD_MINDETACH_MODULE" = true ] && ! grep -q "$pkg_name" $PKGS_LIST; then echo "$pkg_name" >>$PKGS_LIST; fi
-
-		uninstall_sh "$pkg_name" "$base_template"
-		service_sh "$pkg_name" "$version" "$base_template"
-		customize_sh "$pkg_name" "$version" "$base_template"
-
 		if [ "$arch" = "all" ]; then
 			upj="${app_name_l}-update.json"
 		else
 			upj="${app_name_l}-${arch}-update.json"
 		fi
-		if [ -z "${args[module_prop_name]}" ]; then
-			if [ "$arch" = "all" ]; then
-				module_prop_name="${app_name_l}-rv-E85-magisk"
-			else
-				module_prop_name="${app_name_l}-${arch}-rv-E85-magisk"
-			fi
-		else
-			module_prop_name=${args[module_prop_name]}
-		fi
+
+		uninstall_sh "$pkg_name" "$base_template"
+		service_sh "$pkg_name" "$version" "$base_template"
+		customize_sh "$pkg_name" "$version" "$base_template"
 		module_prop \
-			"$module_prop_name" \
-			"${app_name} ReVanced Extended" \
+			"${args[module_prop_name]}" \
+			"${app_name} ${RV_BRAND}" \
 			"$version" \
-			"${app_name} ReVanced Extended Magisk module" \
+			"${app_name} ${RV_BRAND} Magisk module" \
 			"https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/update/${upj}" \
 			"$base_template"
 
-		local module_output="${app_name_l}-revanced-extended-magisk-v${version}-${arch}.zip"
+		local module_output="${app_name_l}-${RV_BRAND_F}-magisk-v${version}-${arch}.zip"
 		zip_module "$patched_apk" "$module_output" "$stock_apk" "$pkg_name" "$base_template"
 
 		echo "Built ${app_name} (${arch}) (root): '${BUILD_DIR}/${module_output}'"

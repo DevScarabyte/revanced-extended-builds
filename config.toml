@@ -1,21 +1,21 @@
 # see https://github.com/E85Addict/revanced-extended-builds/blob/main/CONFIG.md for more detailed explanations
-
-compression-level = 9         # compression level for module zips. between 1 and 9
-logging-to-file = true        # enables logging of every patch process to a seperate file
-enable-magisk-update = true   # set this to false if you do not want to receive updates for the module in magisk app
-parallel-jobs = 3             # max number of concurrent building jobs
-update-prebuilts = true       # dont touch this
+compression-level = 9 # compression level for module zips. between 1 and 9
+logging-to-file = true # enables logging of every patch process to a seperate file
+enable-magisk-update = true # set this to false if you do not want to receive updates for the module in magisk app
+parallel-jobs = 3 # max number of concurrent building jobs
 build-mindetach-module = true
-
+# extended
+patches-source = "inotia00/revanced-patches"
+integrations-source = "inotia00/revanced-integrations"
+rv-brand = "ReVanced Extended"
 
 [YouTube-Revancify]
-enabled = true                                                        # add 'enabled = false' key to entries to not build them
-build-mode = "both"                                                   # 'both', 'apk' or 'module'
-excluded-patches = "debugging custom-branding-icon-afn-red custom-branding-name"# whitespace seperated list of patches to exclude (multiline strings are not supported)
-included-patches = "custom-branding-icon-revancify"                   # whitespace seperated list of patches to include
-version = "auto"                                                      # 'auto', 'latest' or a custom one like '17.40.41'
-exclusive-patches = false                                             # excludes all patches by default
-microg-patch = "microg-support"
+enabled = true # add 'enabled = false' key to entries to not build them
+build-mode = "both" # 'both', 'apk' or 'module'
+excluded-patches = "debugging custom-branding-icon-afn-red custom-branding-name" # whitespace seperated list of patches to exclude (multiline strings are not supported)
+included-patches = "custom-branding-icon-revancify" # whitespace seperated list of patches to include
+version = "auto" # 'auto', 'latest' or a custom one like '17.40.41'
+exclusive-patches = false # excludes all patches by default
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 module-prop-name = "ytrv-magisk"
 
@@ -26,7 +26,6 @@ excluded-patches = "debugging custom-branding-icon-revancify custom-branding-nam
 included-patches = "custom-branding-icon-afn-red"
 version = "auto"
 exclusive-patches = false
-microg-patch = "microg-support"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 module-prop-name = "ytrvr-magisk"
 
@@ -37,7 +36,6 @@ excluded-patches = "debugging custom-branding-icon-afn-red  custom-branding-icon
 included-patches = "custom-branding-icon-afn-blue"
 version = "auto"  
 exclusive-patches = false
-microg-patch = "microg-support"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 module-prop-name = "ytrvb-magisk"
 
@@ -47,7 +45,6 @@ build-mode = "both"
 excluded-patches = "custom-branding-music-red"
 included-patches = "custom-branding-music-revancify"
 version = "auto"
-microg-patch = "music-microg-support"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 module-prop-name = "ytmusicrv-magisk"
 arch = "arm64-v8a"
@@ -58,7 +55,6 @@ build-mode = "both"
 excluded-patches = "custom-branding-music-revancify"
 included-patches = "custom-branding-music-red"
 version = "auto"
-microg-patch = "music-microg-support"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 module-prop-name = "ytmusicrvr-magisk"
 arch = "arm64-v8a"
@@ -69,7 +65,6 @@ build-mode = "both"
 excluded-patches = "custom-branding-music-red"
 included-patches = "custom-branding-music-revancify"
 version = "auto"
-microg-patch = "music-microg-support"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 module-prop-name = "ytmusicrv-arm-magisk"
 arch = "arm-v7a"
@@ -80,7 +75,6 @@ build-mode = "both"
 excluded-patches = "custom-branding-music-revancify"
 included-patches = "custom-branding-music-red"
 version = "auto"
-microg-patch = "music-microg-support"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 module-prop-name = "ytmusicrvr-arm-magisk"
 arch = "arm-v7a"

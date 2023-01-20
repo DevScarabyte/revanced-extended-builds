@@ -6,19 +6,25 @@ source utils.sh
 trap "rm -rf temp/tmp.*" INT
 
 : >build.md
-mkdir -p "$BUILD_DIR" "$TEMP_DIR"
 
 toml_prep "$(cat 2>/dev/null "${1:-config.toml}")" || abort "could not find config file '${1}'"
 main_config_t=$(toml_get_table "")
 COMPRESSION_LEVEL=$(toml_get "$main_config_t" compression-level) || abort "ERROR: compression-level is missing"
 ENABLE_MAGISK_UPDATE=$(toml_get "$main_config_t" enable-magisk-update) || abort "ERROR: enable-magisk-update is missing"
 PARALLEL_JOBS=$(toml_get "$main_config_t" parallel-jobs) || abort "ERROR: parallel-jobs is missing"
-UPDATE_PREBUILTS=$(toml_get "$main_config_t" update-prebuilts) || abort "ERROR: update-prebuilts is missing"
 BUILD_MINDETACH_MODULE=$(toml_get "$main_config_t" build-mindetach-module) || abort "ERROR: build-mindetach-module is missing"
 LOGGING_F=$(toml_get "$main_config_t" logging-to-file) || LOGGING_F=false
 
+PATCHES_SRC=$(toml_get "$main_config_t" patches-source) || PATCHES_SRC="revanced/revanced-patches"
+INTEGRATIONS_SRC=$(toml_get "$main_config_t" integrations-source) || INTEGRATIONS_SRC="revanced/revanced-integrations"
+RV_BRAND=$(toml_get "$main_config_t" rv-brand) || RV_BRAND="ReVanced"
+RV_BRAND_F=${RV_BRAND,,}
+RV_BRAND_F=${RV_BRAND_F// /-}
+PREBUILTS_DIR="${TEMP_DIR}/tools-${RV_BRAND_F}"
+mkdir -p "$BUILD_DIR" "$PREBUILTS_DIR"
+
 if ((COMPRESSION_LEVEL > 9)) || ((COMPRESSION_LEVEL < 0)); then abort "compression-level must be from 0 to 9"; fi
-if [ "$UPDATE_PREBUILTS" = true ]; then get_prebuilts; else set_prebuilts; fi
+if [ "$DRYRUN" = true ]; then set_prebuilts; else get_prebuilts; fi
 if [ "$BUILD_MINDETACH_MODULE" = true ]; then : >$PKGS_LIST; fi
 if [ "$LOGGING_F" = true ]; then mkdir -p logs; fi
 jq --version >/dev/null || abort "\`jq\` is not installed. install it with 'apt install jq' or equivalent"
@@ -52,7 +58,6 @@ for table_name in $(toml_get_table_names); do
 			abort "ERROR: undefined build mode '${app_args[build_mode]}' for '${table_name}': only 'both', 'apk' or 'module' are allowed"
 		fi
 	} || app_args[build_mode]=apk
-	app_args[microg_patch]=$(toml_get "$t" microg-patch) || app_args[microg_patch]=""
 	app_args[uptodown_dlurl]=$(toml_get "$t" uptodown-dlurl) && {
 		app_args[uptodown_dlurl]=${app_args[uptodown_dlurl]%/}
 		app_args[uptodown_dlurl]=${app_args[uptodown_dlurl]%download}
@@ -74,16 +79,13 @@ for table_name in $(toml_get_table_names); do
 	app_args[module_prop_name]=$(toml_get "$t" module-prop-name) || {
 		app_name_l=${app_args[app_name],,}
 		if [ "${app_args[arch]}" = "all" ]; then
-			app_args[module_prop_name]="${app_name_l}-rv-E85-magisk"
+			app_args[module_prop_name]="${app_name_l}-${RV_BRAND_F}-E85"
 		else
-			app_args[module_prop_name]="${app_name_l}-${app_args[arch]}-rv-E85-magisk"
+			app_args[module_prop_name]="${app_name_l}-${app_args[arch]}-${RV_BRAND_F}-E85"
 		fi
 	}
 	app_args[patcher_args]="$(join_args "${excluded_patches}" -e) $(join_args "${included_patches}" -i)"
 	[ "$exclusive_patches" = true ] && app_args[patcher_args]+=" --exclusive"
-	if [ "${app_args[microg_patch]}" ] && [[ "${app_args[patcher_args]}" = *"${app_args[microg_patch]}"* ]]; then
-		abort "ERROR: Do not include microg in included or excluded patches list"
-	fi
 	if [ "$LOGGING_F" = true ]; then
 		logf=logs/"${table_name,,}.log"
 		: >"$logf"
