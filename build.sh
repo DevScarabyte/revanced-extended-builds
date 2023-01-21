@@ -62,11 +62,11 @@ for table_name in $(toml_get_table_names); do
 		app_args[uptodown_dlurl]=${app_args[uptodown_dlurl]%/}
 		app_args[uptodown_dlurl]=${app_args[uptodown_dlurl]%download}
 		app_args[uptodown_dlurl]=${app_args[uptodown_dlurl]%/}
-		app_args[dl_from]=UpToDown
+		app_args[dl_from]=uptodown
 	} || app_args[uptodown_dlurl]=""
 	app_args[apkmirror_dlurl]=$(toml_get "$t" apkmirror-dlurl) && {
 		app_args[apkmirror_dlurl]=${app_args[apkmirror_dlurl]%/}
-		app_args[dl_from]=APKMirror
+		app_args[dl_from]=apkmirror
 	} || app_args[apkmirror_dlurl]=""
 	if [ -z "${app_args[dl_from]:-}" ]; then
 		abort "ERROR: neither 'apkmirror_dlurl' nor 'uptodown_dlurl' were not set for '$table_name'."

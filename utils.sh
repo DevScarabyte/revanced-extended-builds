@@ -217,9 +217,9 @@ build_rv() {
 	p_patcher_args+=("$(join_args "${args[excluded_patches]}" -e) $(join_args "${args[included_patches]}" -i)")
 	[ "${args[exclusive_patches]}" = true ] && p_patcher_args+=("--exclusive")
 
-	if [ "$dl_from" = APKMirror ]; then
+	if [ "$dl_from" = apkmirror ]; then
 		pkg_name=$(get_apkmirror_pkg_name "${args[apkmirror_dlurl]}")
-	elif [ "$dl_from" = UpToDown ]; then
+	elif [ "$dl_from" = uptodown ]; then
 		uptwod_resp=$(get_uptodown_resp "${args[uptodown_dlurl]}")
 		pkg_name=$(get_uptodown_pkg_name "${args[uptodown_dlurl]}")
 	fi
@@ -236,10 +236,10 @@ build_rv() {
 	fi
 	if [ $get_latest_ver = true ]; then
 		local apkmvers uptwodvers
-		if [ "$dl_from" = APKMirror ]; then
+		if [ "$dl_from" = apkmirror ]; then
 			apkmvers=$(get_apkmirror_vers "${args[apkmirror_dlurl]##*/}" "${args[allow_alpha_version]}")
 			version=$(get_largest_ver <<<"$apkmvers") || version=$(head -1 <<<"$apkmvers")
-		elif [ "$dl_from" = UpToDown ]; then
+		elif [ "$dl_from" = uptodown ]; then
 			uptwodvers=$(get_uptodown_vers "$uptwod_resp")
 			version=$(get_largest_ver <<<"$uptwodvers") || version=$(head -1 <<<"$uptwodvers")
 		fi
@@ -253,7 +253,7 @@ build_rv() {
 	local version_f=${version// /}
 	local stock_apk="${TEMP_DIR}/${pkg_name}-stock-${version_f}-${arch}.apk"
 	if [ ! -f "$stock_apk" ]; then
-		if [ "$dl_from" = APKMirror ]; then
+		if [ "$dl_from" = apkmirror ]; then
 			echo "Downloading '${app_name}' from APKMirror"
 			if [ "$arch" = "all" ]; then
 				apkmirror_regex="APK</span>[^@]*@\([^#]*\)"
@@ -265,13 +265,18 @@ build_rv() {
 			if ! declare -r dl_url=$(dl_apkmirror "${args[apkmirror_dlurl]}" "$version" "$apkmirror_regex" "$stock_apk"); then
 				abort "ERROR: Could not find any release of '${app_name}' with version '${version}' from APKMirror"
 			fi
-		elif [ "$dl_from" = UpToDown ]; then
+		elif [ "$dl_from" = uptodown ]; then
 			echo "Downloading '${app_name}' from Uptodown"
 			if ! declare -r dl_url=$(dl_uptodown "$uptwod_resp" "$version" "$stock_apk"); then
 				abort "ERROR: Could not download ${app_name} from Uptodown"
 			fi
 		fi
 	fi
+    if [ "$dl_from" = apkmirror ]; then
+        dl_from="APKMirror"
+    elif [ "$dl_from" = uptodown ]; then
+        dl_from="Uptodown"
+    fi
 	if [ "${arch}" = "all" ]; then
 		grep -q "${app_name}:" build.md || log "${app_name}: ${version}\ndownloaded from: [$dl_from - ${app_name}]($dl_url)"
 	else
