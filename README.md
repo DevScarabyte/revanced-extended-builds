@@ -37,10 +37,16 @@ To add more Revanced apps or know more about `config.toml`, read here [`CONFIG.m
 To be able to use non-root variants of YouTube and YT Music, install [Vanced MicroG](https://github.com/Inotia00/VancedMicroG/releases).
 
 # Building Locally
+## On Termux
+```console
+bash <(curl -sSf https://raw.githubusercontent.com/E85Addict/revanced-extended-builds/main/build-termux.sh)
+```
+
+## On Desktop
 Make sure you have JDK 17 installed. Then run:
 
 ```console
-$ git clone --recurse-submodules https://github.com/E85Addict/revanced-extended-builds
+$ git clone --recurse https://github.com/E85Addict/revanced-extended-builds
 $ cd revanced-extended-builds
 $ ./build.sh
 ```
