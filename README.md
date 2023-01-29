@@ -11,15 +11,13 @@ Get the [latest CI release](https://github.com/E85Addict/revanced-extended-build
 ## Features
  * Support all present and future ReVanced and [ReVanced Extended](https://github.com//inotia00/revanced-patches) apps
  * Can build Magisk modules and non-root APKs
- * Updated daily with the latest versions of apps and patches in accordance with your configuration
- * Cleans APKs from unneeded libs to make them smaller
- * Fully open-source, every binary or APK is compiled without human intervention
+ * Updated daily with the latest versions of apps and patches
+ * Cleans APKs
  * Modules
-     * recompile invalidated odex for YouTube and Music apps for faster usage
+     * recompile invalidated odex for faster usage
      * receive updates from Magisk app
-     * do not break safetynet or trigger root detections used by certain apps
+     * do not break safetynet or trigger root detections
      * handle installation of the correct version of the stock app and all that
-     * mount the patched app immediately without needing to reboot
 
 #### **Note that the [CI workflow](../../actions/workflows/ci.yml) is scheduled to build the modules and APKs everyday using GitHub Actions if there is a change in ReVanced patches. You may want to disable it.**
 
@@ -28,13 +26,11 @@ Get the [latest CI release](https://github.com/E85Addict/revanced-extended-build
 
  * Star the repo :eyes:
  * [Fork the repo](https://github.com/E85Addict/revanced-extended-builds/fork) or use it as a template
- * Edit the options in [`config.toml`](./config.toml)
+ * Customize [`config.toml`](./config.toml)
  * Run the build [workflow](../../actions/workflows/build.yml)
  * Grab your modules and APKs from [releases](../../releases)
 
-To add more Revanced apps or know more about `config.toml`, read here [`CONFIG.md`](./CONFIG.md)
-
-To be able to use non-root variants of YouTube and YT Music, install [Vanced MicroG](https://github.com/Inotia00/VancedMicroG/releases).
+To add more ReVanced apps or build ReVanced Extended `config.toml`, read here [`CONFIG.md`](./CONFIG.md)
 
 # Building Locally
 ## On Termux
@@ -43,7 +39,7 @@ bash <(curl -sSf https://raw.githubusercontent.com/E85Addict/revanced-extended-b
 ```
 
 ## On Desktop
-Make sure you have JDK 17 installed. Then run:
+Make sure you have JDK 17 and jq installed. Then run:
 
 ```console
 $ git clone --recurse https://github.com/E85Addict/revanced-extended-builds

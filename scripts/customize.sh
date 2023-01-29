@@ -24,7 +24,7 @@ BASEPATH=${BASEPATH#*:}
 INS=true
 if [ "$BASEPATH" ]; then
 	if [ ! -d ${BASEPATH%base.apk}lib ]; then
-		ui_print "Invalid installation found. Uninstalling..."
+		ui_print "* Invalid installation found. Uninstalling..."
 		pm uninstall -k --user 0 __PKGNAME
 	elif cmpr $BASEPATH $MODPATH/__PKGNAME.apk; then
 		ui_print "* __PKGNAME is up-to-date"
@@ -57,8 +57,9 @@ ui_print "* Setting Permissions"
 set_perm $MODPATH/base.apk 1000 1000 644 u:object_r:apk_data_file:s0
 
 ui_print "* Mounting __PKGNAME"
-RVPATH=/data/adb/__PKGNAME_rv.apk
-ln -f $MODPATH/base.apk $RVPATH
+mkdir $NVBASE/rvhc 2>/dev/null
+RVPATH=$NVBASE/rvhc/__PKGNAME_rv.apk
+mv -f $MODPATH/base.apk $RVPATH
 
 if ! op=$(su -Mc mount -o bind $RVPATH $BASEPATH 2>&1); then
 	ui_print "ERROR: Mount failed!"
@@ -69,7 +70,7 @@ am force-stop __PKGNAME
 ui_print "* Optimizing __PKGNAME"
 cmd package compile --reset __PKGNAME &
 
-rm -r $MODPATH/bin $MODPATH/__PKGNAME.apk
+rm -rf $MODPATH/bin $MODPATH/__PKGNAME.apk $NVBASE/__PKGNAME_rv.apk
 
 ui_print "* Done"
 ui_print "  by E85 Addict (github.com/E85Addict)"
