@@ -62,7 +62,7 @@ arch = "arm64-v8a"
 [Music-arm-Revancify]
 enabled = false
 build-mode = "both"
-excluded-patches = "custom-branding-music-red"
+excluded-patches = "custom-branding-music-red custom-branding-music-afn-blue"
 included-patches = "custom-branding-music-revancify"
 version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
@@ -72,9 +72,19 @@ arch = "arm-v7a"
 [Music-arm-Red]
 enabled = false
 build-mode = "both"
-excluded-patches = "custom-branding-music-revancify"
-included-patches = "custom-branding-music-red"
+excluded-patches = "custom-branding-music-revancify custom-branding-music-afn-blue"
+included-patches = "custom-branding-music-afn-red"
 version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 module-prop-name = "ytmusicrvr-arm-magisk"
+arch = "arm-v7a"
+
+[Music-arm-Blue]
+enabled = false
+build-mode = "both"
+excluded-patches = "custom-branding-music-revancify custom-branding-music-afn-red"
+included-patches = "custom-branding-music-afn-blue"
+version = "auto"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
+module-prop-name = "ytmusicrvb-arm-magisk"
 arch = "arm-v7a"
