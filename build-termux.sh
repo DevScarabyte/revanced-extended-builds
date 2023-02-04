@@ -62,6 +62,6 @@ for op in *; do
 done
 
 pr "Outputs are available in /sdcard/Download folder"
-am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-magisk-module -t resource/folder
+am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-extended-builds -t resource/folder
 sleep 2
-am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-magisk-module -t resource/folder
+am start -a android.intent.action.VIEW -d file:///sdcard/Download/revanced-extended-builds -t resource/folder
