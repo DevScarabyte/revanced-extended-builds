@@ -28,12 +28,10 @@ if [ -d revanced-extended-builds ]; then
 		rm -rf revanced-extended-builds
 		git clone https://github.com/E85Addict/revanced-extended-builds --recurse --depth 1
 		sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' revanced-extended-builds/config.toml
-		sed -i -e "s/parallel-jobs = 3/parallel-jobs = 1/g" revanced-extended-builds/config.toml
 	fi
 else
 	git clone https://github.com/E85Addict/revanced-extended-builds --recurse --depth 1
 	sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' revanced-extended-builds/config.toml
-	sed -i -e "s/parallel-jobs = 3/parallel-jobs = 1/g" revanced-extended-builds/config.toml
 fi
 cd revanced-extended-builds
 
