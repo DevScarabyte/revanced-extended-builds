@@ -19,29 +19,29 @@ ask() {
 	return 1
 }
 
-pr "Setting up environment..."
-yes "" | pkg update -y && pkg install -y git wget openssl jq openjdk-17 zip
+if [ ! -f ~/.rvmm_"$(date '+%Y%m')" ]; then
+	pr "Setting up environment..."
+	yes "" | pkg update -y && pkg install -y git wget openssl jq openjdk-17 zip
+	: >~/.rvmm_"$(date '+%Y%m')"
+fi
 
 pr "Cloning revanced-extended-builds repository..."
 if [ -d revanced-extended-builds ]; then
-	if ask "Directory revanced-extended-builds already exists. Do you want to clone the repo again and overwrite your config? [y/n]"; then
-		rm -rf revanced-extended-builds
-		git clone https://github.com/E85Addict/revanced-extended-builds --recurse --depth 1
-		sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' revanced-extended-builds/config.toml
-	fi
+	cd revanced-extended-builds
+	git fetch
+	git rebase -X ours
+elif [ -f build.sh ]; then
+	git fetch
+	git rebase -X ours
 else
 	git clone https://github.com/E85Addict/revanced-extended-builds --recurse --depth 1
-	sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' revanced-extended-builds/config.toml
-fi
-
-if [ ! -f build.sh ]; then
 	cd revanced-extended-builds
+	sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' config.toml
 fi
 
 if ask "Do you want to open the config.toml for customizations? [y/n]"; then
 	nano config.toml
-else
-	pr "No app is selected for patching!"
+	git add config.toml && git -c user.name='rvmm' -c user.email='' commit -m config || :
 fi
 if ! ask "Setup is done. Do you want to start building? [y/n]"; then
 	exit 0
@@ -58,7 +58,7 @@ do
 done
 
 PWD=$(pwd)
-mkdir ~/storage/downloads/revanced-extended-builds 2>/dev/null || :
+mkdir -p ~/storage/downloads/revanced-extended-builds
 for op in *; do
 	[ "$op" = "*" ] && continue
 	cp -f "${PWD}/${op}" ~/storage/downloads/revanced-extended-builds/"${op}"
