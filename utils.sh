@@ -314,7 +314,7 @@ build_rv() {
 				apkm_arch="armeabi-v7a"
 			fi
 			if ! declare -r dl_url=$(dl_apkmirror "${args[apkmirror_dlurl]}" "$version" "$stock_apk" APK "$apkm_arch" "${args[dpi]}"); then
-				epr "ERROR: Could not find any release of '${app_name}' with version '${version}' and arch '${apkm_arch}' from APKMirror"
+				epr "ERROR: Could not find any release of '${app_name}' with version '${version}', arch '${apkm_arch}' and dpi '${args[dpi]}' from APKMirror"
 				return 0
 			fi
 		elif [ "$dl_from" = uptodown ]; then

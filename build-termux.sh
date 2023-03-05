@@ -25,23 +25,28 @@ if [ ! -f ~/.rvmm_"$(date '+%Y%m')" ]; then
 	: >~/.rvmm_"$(date '+%Y%m')"
 fi
 
-pr "Cloning revanced-extended-builds repository..."
+if [ -f build.sh ]; then cd ..; fi
 if [ -d revanced-extended-builds ]; then
-	cd revanced-extended-builds
-	git fetch
-	git rebase -X ours
-elif [ -f build.sh ]; then
-	git fetch
-	git rebase -X ours
+	pr "Checking for revanced-extended-builds updates"
+	git -C revanced-extended-builds fetch
+	if git -C revanced-extended-builds status | grep -q 'is behind'; then
+		pr "revanced-extended-builds already is not synced with upstream."
+		pr "Cloning revanced-extended-builds. config.toml will be preserved."
+		cp -f revanced-extended-builds/config.toml .
+		rm -rf revanced-extended-builds
+		git clone https://github.com/E85Addict/revanced-extended-builds --recurse --depth 1
+		mv -f config.toml revanced-extended-builds/config.toml
+	fi
 else
+	pr "Cloning revanced-extended-builds."
 	git clone https://github.com/E85Addict/revanced-extended-builds --recurse --depth 1
-	cd revanced-extended-builds
-	sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' config.toml
+	sed -i '/^enabled.*/d; /^\[.*\]/a enabled = false' revanced-extended-builds/config.toml
 fi
+cd revanced-extended-builds
+chmod +x build.sh build-termux.sh
 
 if ask "Do you want to open the config.toml for customizations? [y/n]"; then
 	nano config.toml
-	git add config.toml && git -c user.name='rvmm' -c user.email='' commit -m config || :
 fi
 if ! ask "Setup is done. Do you want to start building? [y/n]"; then
 	exit 0
