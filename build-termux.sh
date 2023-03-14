@@ -66,7 +66,7 @@ PWD=$(pwd)
 mkdir -p ~/storage/downloads/revanced-extended-builds
 for op in *; do
 	[ "$op" = "*" ] && continue
-	cp -f "${PWD}/${op}" ~/storage/downloads/revanced-extended-builds/"${op}"
+	mv -f "${PWD}/${op}" ~/storage/downloads/revanced-extended-builds/"${op}"
 done
 
 pr "Outputs are available in /sdcard/Download/revanced-extended-builds folder"
