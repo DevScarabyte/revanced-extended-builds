@@ -13,10 +13,10 @@ rv-brand = "ReVanced Extended"
 
 [YouTube]
 enabled = true
-build-mode = "both"                                                 # 'both', 'apk' or 'module'
-excluded-patches = "debugging custom-branding-icon-afn-red custom-branding-icon-afn-blue custom-branding-name" # whitespace seperated list of patches to exclude (multiline strings are not supported)
-included-patches = "custom-branding-icon-revancify" # whitespace seperated list of patches to include
-version = "auto"                                                      # 'auto', 'latest' or a custom one like '17.40.41'
+build-mode = "both"                                                   # 'both', 'apk' or 'module'
+excluded-patches = "custom-branding-icon-afn-red custom-branding-icon-afn-blue custom-branding-name"# space-seperated patches to exclude (multiline strings are not supported)
+included-patches = "custom-branding-icon-revancify"                   # space-seperated patches to include (non-excluded patches are included by default)
+version = "auto"                                                      # 'auto', 'latest', 'beta' or a custom one like '17.40.41'
 exclusive-patches = false                                             # excludes all patches by default
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 module-prop-name = "ytrv-magisk"
