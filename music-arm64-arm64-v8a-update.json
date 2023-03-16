@@ -1,6 +1,6 @@
 {
-  "version": "v5.41.50",
-  "versionCode": 2023109,
-  "zipUrl": "https://github.com/E85Addict/revanced-extended-builds/releases/download/2023109/music-arm64-revanced-extended-magisk-v5.41.50-arm64-v8a.zip",
-  "changelog": "https://raw.githubusercontent.com/E85Addict/revanced-extended-builds/update/build.md"
+  "version": "v5.48.52",
+  "versionCode": 2023112,
+  "zipUrl": "https://github.com/heihachi/revanced-extended-builds/releases/download/2023112/music-arm64-revanced-extended-magisk-v5.48.52-arm64-v8a.zip",
+  "changelog": "https://raw.githubusercontent.com/heihachi/revanced-extended-builds/update/build.md"
 }

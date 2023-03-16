@@ -1,31 +1,29 @@
-CLI: revanced-cli-2.20.1-all.jar  
-Integrations: app-release-unsigned.apk  
-Patches: revanced-patches-2.158.4.jar  
+CLI: revanced-cli-2.20.2-all.jar  
+Integrations: revanced-integrations-0.100.1.apk  
+Patches: revanced-patches-2.165.1.jar  
 
 YouTube
 ==
-- add `disable-shorts-player-pip` patch (Experimental Flags)
-- fix: `Hide preview comment` setting hides Chapters area in video info panel
-- refactor: `Hide shorts player subscriptions button` setting now hides the red subscribe button, too
+- fix: issues with protobuf https://github.com/inotia00/ReVanced_Extended/issues/480 https://github.com/inotia00/ReVanced_Extended/issues/484
+- refactor(protobuf-spoof): integrated into settings
+- refactor(protobuf-spoof): set to off by default
+- feat(general-ads): hide new type of ad
 - crowdin translation update
-`Arabic`,  `French`, `Indonesian`, `Russian`, `Spanish`
+`Arabic`, `French`, `Greek`, `Indonesian`, `Korean`, `Spanish`, `Ukrainian`, `Vietnamese`
 
-ETC
-==
-- add suport YouTube v18.03.42
 
-※ Compatible ReVanced Manager: v0.0.53
+※ Compatible ReVanced Manager: v0.0.57
 ※ If you want to contribute to the translation, refer below
 
 [Crowdin translation]
-- [european countries](https://crowdin.com/project/revancedextendedeu)
-- [other countries](https://crowdin.com/project/revancedextended)
+- [European Countries](https://crowdin.com/project/revancedextendedeu)
+- [Other Countries](https://crowdin.com/project/revancedextended)
   
 **App Versions:**  
-YouTube: 18.04.35
-downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-04-35-release/youtube-18-04-35-2-android-apk-download/)  
-Music-arm64 (arm64-v8a): 5.42.50
-downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-5-42-50-release/youtube-music-5-42-50-2-android-apk-download/)  
+Music-arm64 (arm64-v8a): 5.48.52
+downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-5-48-52-release/youtube-music-5-48-52-android-apk-download/)  
+YouTube: 18.10.36
+downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-10-36-release/youtube-18-10-36-android-apk-download/)  
 Tiktok: 27.2.5
 downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
 
