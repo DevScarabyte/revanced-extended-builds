@@ -40,3 +40,11 @@ version = "auto"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 module-prop-name = "ytmusicrv-arm-magisk"
 arch = "arm-v7a"
+
+[Tiktok]
+enabled = true
+build-mode = "both"
+excluded-patches = ""
+included-patches = ""
+version = "27.2.5"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/"
