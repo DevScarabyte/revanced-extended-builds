@@ -1,15 +1,27 @@
 CLI: revanced-cli-2.20.2-all.jar  
-Integrations: revanced-integrations-0.100.1.apk  
-Patches: revanced-patches-2.165.1.jar  
+Integrations: revanced-integrations-0.100.2.apk  
+Patches: revanced-patches-2.166.1.jar  
 
 YouTube
 ==
-- fix: issues with protobuf https://github.com/inotia00/ReVanced_Extended/issues/480 https://github.com/inotia00/ReVanced_Extended/issues/484
-- refactor(protobuf-spoof): integrated into settings
-- refactor(protobuf-spoof): set to off by default
-- feat(general-ads): hide new type of ad
+- add `hide-autoplay-preview` patch
+- add `Show fullscreen title` settings
+- fix(return-youtube-dislike): fix right to left text layout
+- refactor(hide-autoplay-button): no longer hide [autoplay preview](https://www.reddit.com/r/revancedextended/comments/11q8rng/any_idea_how_to_hide_this_banner_in_full_screen/)
+- refactor(protobuf-spoof): move to `Experimental Flags`
 - crowdin translation update
-`Arabic`, `French`, `Greek`, `Indonesian`, `Korean`, `Spanish`, `Ukrainian`, `Vietnamese`
+`Chinese Traditional`, `French`, `Greek`, `Italian`, `Japanese`, `Korean`, `Polish`, `Russian`, `Ukrainian`, `Vietnamese`
+
+
+YouTube Music
+==
+- crowdin translation update
+`Chinese Traditional`
+
+
+ETC
+==
+- add suport YouTube v18.10.36
 
 
 ※ Compatible ReVanced Manager: v0.0.57
@@ -20,10 +32,10 @@ YouTube
 - [Other Countries](https://crowdin.com/project/revancedextended)
   
 **App Versions:**  
-Music-arm64 (arm64-v8a): 5.48.52
-downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-5-48-52-release/youtube-music-5-48-52-android-apk-download/)  
 YouTube: 18.10.36
 downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-10-36-release/youtube-18-10-36-android-apk-download/)  
+Music-arm64 (arm64-v8a): 5.48.52
+downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-5-48-52-release/youtube-music-5-48-52-android-apk-download/)  
 Tiktok: 27.2.5
 downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
 
