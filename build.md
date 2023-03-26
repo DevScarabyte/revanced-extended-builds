@@ -1,19 +1,25 @@
 CLI: revanced-cli-2.20.2-all.jar  
-Integrations: revanced-integrations-0.100.12.apk  
-Patches: revanced-patches-2.166.12.jar  
+Integrations: revanced-integrations-0.100.15.apk  
+Patches: revanced-patches-2.166.15.jar  
 
 YouTube
 ==
-- add `hide-account-menu` patch https://t.me/revanced_extended_chat/180885
-- refactor(hide-video-ads): match with the official ReVanced's source code
-- refactor(hide-button-container): integrate `Hide share button` into `Hide action buttons` (also fix https://github.com/inotia00/ReVanced_Extended/issues/541)
+- fix: `hide-account-menu`patch hides all account menu when filter is empty https://github.com/inotia00/ReVanced_Extended/issues/554
+- fix: `hide-mixplaylists`patch blocks all search results for certain keywords https://github.com/inotia00/ReVanced_Extended/issues/562
 - crowdin translation update
-`Arabic`, `Chinese Simplified`, `Chinese Traditional`, `French`, `Indonesian`, `Italian`, `Japanese`, `Korean`, `Polish`, `Russian`, `Spanish`, `Turkish`, `Ukrainian`, `Vietnamese`
+`Chinese Traditional`, `French`, `Greek`, `Italian`, `Japanese`, `Korean`, `Polish`, `Russian`, `Turkish`, `Ukrainian`, `Vietnamese`
+
+
+YouTube Music
+==
+- crowdin translation update
+`Chinese Traditional`
 
 
 ETC
 ==
-- add support YouTube v18.11.35
+- add support YouTube v18.11.36
+- drop support YouTube v18.11.35
 
 
 ※ Compatible ReVanced Manager: v0.0.57
@@ -26,8 +32,8 @@ ETC
 **App Versions:**  
 Music-arm64 (arm64-v8a): 5.49.54
 downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-5-49-54-release/youtube-music-5-49-54-2-android-apk-download/)  
-YouTube: 18.11.35
-downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-11-35-release/youtube-18-11-35-2-android-apk-download/)  
+YouTube: 18.11.36
+downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-11-36-release/youtube-18-11-36-android-apk-download/)  
 Tiktok: 27.2.5
 downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
 
