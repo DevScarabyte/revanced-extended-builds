@@ -1,34 +1,42 @@
 CLI: revanced-cli-4.0.3-all.jar  
-Integrations: revanced-integrations-0.119.12.apk  
-Patches: revanced-patches-2.193.12.jar  
+Integrations: revanced-integrations-0.119.15.apk  
+Patches: revanced-patches-2.193.15.jar  
 
 YouTube
 ==
-- feat(YouTube): add `Enable gradient loading screen` patch. if you disable `Enable gradient loading screen`, gradient loading screen will be disabled. [screenshot](https://www.reddit.com/r/youtube/comments/15q5xb5/weird_gradient_colored_skeleton_loading_screen/)
-- feat(YouTube): change patch name `Language switch` → `Enable language switch`
-- feat(YouTube/Enable language switch): now the `Enable language switch` switch has been added to the Miscellaneous settings, and if you disable `Enable language switch`, the language switch toggle will be hidden
-- feat(YouTube/Hide shorts components): add support for new type of subscriptions button
-- feat(YouTube/Hide shorts components): `Hide info panels` now also hides the panel for music information
-- feat(YouTube/Settings): import/export settings are no longer Experimental Flags
-- fix(YouTube/Bypass ambient mode restrictions): apply fingerprint compatible with wider version
-- fix(YouTube/Enable new comment popup panels): change default value
-- fix(YouTube/Hide channel watermark): watermark is not hidden https://github.com/inotia00/ReVanced_Extended/issues/1521
-- fix(YouTube/Hide shorts components): like and dislike buttons cant be hidden https://github.com/inotia00/ReVanced_Extended/issues/1525
-- fix(YouTube/Old quality layout · Old speed layout): old quality layout / custom playback speed not working in certain situations https://github.com/inotia00/ReVanced_Extended/issues/1507
+- feat(YouTube): add support version `v18.37.36`
+- feat(YouTube): change patch name `Force VP9 codec` → `Force video codec` https://github.com/inotia00/revanced-patches/pull/25
+- feat(YouTube/Force video codec): add `Enable HDR codec` settings https://github.com/inotia00/revanced-patches/pull/25
+- feat(YouTube/Hide layout components): add `Hide channel profile links` settings
+- feat(YouTube/Settings): remove warning dialog for Experimental Flags (wastes unnecessary strings resources)
+- fix(YouTube/Custom playback speed): regulate maximum playback speed to 8.0x (playback rate that can be handled by the client)
+- fix(YouTube/Enable minimized playback): Fix pip incorrectly showing if app is minimized immediately after opening a Short https://github.com/inotia00/ReVanced_Extended/issues/1539
+- fix(YouTube/Hide general ads): block new type of web search panel
+- fix(YouTube/Hide layout components): move `Hide join button` to the `Channel bar` subpreference in the `Bottom player` category
+- fix(YouTube/Hide player flyout panel): Shorts player's flyout panel is hidden
+- fix(YouTube/Overlay buttons): disable PiP when click external download button https://github.com/inotia00/revanced-integrations/pull/23
+- fix(YouTube/Return YouTube Dislike): RYD patch for v18.34.38~ is not required for ~v18.33.40
 - feat(YouTube/Translations): update translation
-`Chinese Simplified`, `French`, `Greek`, `Italian`, `Korean`, `Russian`, `Turkish`, `Ukrainian`, `Vietnamese`
+`Arabic`, `Brazilian`, `Bulgarian`, `French`, `Greek`, `Hungarian`, `Indonesian`, `Italian`, `Japanese`, `Korean`, `Polish`, `Russian`, `Spanish`, `Turkish`, `Ukrainian`, `Vietnamese`
 
 
 YouTube Music
 ==
-- fix(YouTube Music/Hook download button): change the description of a setting https://github.com/inotia00/ReVanced_Extended/issues/1528
+- feat(YouTube Music): add `Enable old player layout` patch https://github.com/inotia00/ReVanced_Extended/issues/1532
 - feat(YouTube Music/Translations): update translation
-`Greek`, `Korean`, `Polish`, `Russian`, `Spanish`, `Ukrainian`, `Vietnamese`
+`Brazilian`, `Bulgarian`, `Dutch`, `Greek`, `Indonesian`, `Japanese`, `Korean`, `Russian`, `Spanish`, `Turkish`, `Ukrainian`, `Vietnamese`
+
+
+Reddit
+==
+- fix(Reddit): some patches are broken in version `2023.41.0` https://github.com/inotia00/ReVanced_Extended/issues/1546
 
 
 Etc
 ==
 - When updating from YouTube v18.33.40 or lower to YouTube v18.34.xx or later, a clean install is recommended.
+- The `Enable old player layout` patch for YouTube Music was added due to `patch-request`, but is excluded by default because it is quite unstable
+- If you turn on the `Enable old player layout` setting and the `Enable new player background` setting at the same time, constant crashes will occur
 
 
 ※ Compatible ReVanced Manager: [RVX Manager v1.12.1 (fork)](https://github.com/inotia00/revanced-manager/releases/tag/v1.12.1)
@@ -40,12 +48,12 @@ Etc
 
   
 **App Versions:**  
-Tiktok: 27.2.5
-downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
-YouTube: 18.40.33
-downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-40-33-release/youtube-18-40-33-2-android-apk-download/)  
 Music-arm64 (arm64-v8a): 6.22.51
 downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-6-22-51-release/youtube-music-6-22-51-android-apk-download/)  
+YouTube: 18.40.34
+downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-40-34-release/youtube-18-40-34-2-android-apk-download/)  
+Tiktok: 27.2.5
+downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
 
 Install [Vanced Microg](https://github.com/inotia00/VancedMicroG/releases) to be able to use non-root YouTube or Music  
 
