@@ -1,25 +1,23 @@
 CLI: revanced-cli-4.1.0-all.jar  
-Integrations: revanced-integrations-0.121.7.apk  
-Patches: revanced-patches-2.196.7.jar  
+Integrations: revanced-integrations-0.123.1.apk  
+Patches: revanced-patches-2.199.1.jar  
 
 YouTube
 ==
-- feat(YouTube): add support version `v18.45.41`
-- feat(YouTube): separate the `Hide channel profile components` patch from `Hide layout components` patch
-- feat(YouTube/Hide channel profile components): add `Hide 'For You' shelf` settings https://github.com/inotia00/ReVanced_Extended/issues/1697
-- feat(YouTube/Hide description components): add `Hide podcast sections` settings
-- fix(YouTube/Enable wide search bar): even if `Enable Wide Search Bar` is turned off, the toolbar of You tab is replaced if `Enable wide search bar in you tab` is turned on
-- fix(YouTube/Hide general ads): rollback legacy code
-- fix(YouTube/Return YouTube Dislike): match to official ReVanced code
-- fix(YouTube/Spoof player parameters): change response waiting time
+- fix(YouTube/Default video quality): `Skipped preloaded buffer` is also applied to live stream video
+- fix(YouTube/Hide mix playlists): check if the byte parameter is null
+- fix(YouTube/Minimized playback): buffer symbol showing up instead of play button https://github.com/inotia00/ReVanced_Extended/issues/1482
+- fix(YouTube/Return YouTube Dislike): improve layout padding
+- fix(YouTube/SponsorBlock): skip segments breaks autoplay https://github.com/inotia00/ReVanced_Extended/issues/1714
+- fix(YouTube/Spoof player parameters): frozen video on playback start
 - feat(YouTube/Translations): update translation
-`Arabic`, `Chinese Traditional`, `French`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Polish`, `Russian`, `Spanish`, `Turkish`, `Ukrainian`, `Vietnamese`
+`Bengali`, `Brazilian`, `Bulgarian`, `French`, `Greek`, `Hungarian`, `Indonesian`, `Italian`, `Japanese`, `Korean`, `Polish`, `Russian`, `Spanish`, `Turkish`
 
 
 YouTube Music
 ==
 - feat(YouTube Music/Translations): update translation
-`Chinese Traditional`, `Dutch`, `French`, `Japanese`, `Polish`, `Romanian`, `Russian`, `Turkish`, `Ukrainian`, `Vietnamese`
+`French`, `Greek`, `Indonesian`, `Japanese`, `Korean`
 
 
 Etc
@@ -38,10 +36,10 @@ Etc
 **App Versions:**  
 Tiktok: 27.2.5
 downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
-YouTube: 18.45.41
-downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-45-41-release/youtube-18-45-41-android-apk-download/)  
 Music-arm64 (arm64-v8a): 6.28.52
 downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-6-28-52-release/youtube-music-6-28-52-android-apk-download/)  
+YouTube: 18.45.41
+downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-18-45-41-release/youtube-18-45-41-android-apk-download/)  
 
 Install [Vanced Microg](https://github.com/inotia00/VancedMicroG/releases) to be able to use non-root YouTube or Music  
 
