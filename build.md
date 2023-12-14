@@ -1,28 +1,33 @@
 CLI: revanced-cli-4.3.0-all.jar  
-Integrations: revanced-integrations-0.127.1.apk  
-Patches: revanced-patches-2.204.1.jar  
+Integrations: revanced-integrations-0.128.1.apk  
+Patches: revanced-patches-2.205.1.jar  
 
 YouTube
 ==
-- fix(YouTube/Hide general ads): `interstitial ads` are closed too early
-- fix(YouTube/Hide navigation buttons): update side effect of `Switch create with notifications button` setting
+- feat(YouTube): add `Change start page` patch
+- feat(YouTube): remove `Change homepage` patch
+- feat(YouTube): rename patch `Enable music search` → `Enable song search` https://github.com/inotia00/ReVanced_Extended/issues/1806
+- feat(YouTube/Alternative thumbnails): matches official ReVanced code
+- feat(YouTube/Hide channel profile components): add `Hide store tab` settings
+- feat(YouTube/Hide navigation buttons): clarify toggle descriptions https://github.com/inotia00/revanced-patches/pull/38
+- feat(YouTube/Hide navigation buttons): remove `Open library(You) on app startup` settings
+- feat(YouTube/Spoof player parameters): matches official ReVanced code
+- fix(YouTube/Hide general ads): new types of ads are not blocked https://github.com/inotia00/ReVanced_Extended/issues/1818
+- fix(YouTube/Hide general ads): `Hide view products banner` setting hides the content of `Store` section in channel profile https://github.com/inotia00/ReVanced_Extended/issues/1803
+- fix(YouTube/Return YouTube Dislike): wait until fetch is complete before allowing the first Short to start playback https://github.com/ReVanced/revanced-integrations/pull/538
+- fix(YouTube/Swipe controls): press-to-swipe gesture working on overlays https://github.com/inotia00/ReVanced_Extended/issues/1813
 - feat(YouTube/Translations): update translation
-`Arabic`, `Chinese Traditional`, `French`, `Greek`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Polish`, `Russian`, `Spanish`, `Turkish`, `Ukrainian`, `Vietnamese`
+`Brazilian`, `Bulgarian`, `French`, `Greek`, `Italian`, `Korean`, `Polish`, `Russian`, `Spanish`, `Turkish`, `Ukrainian`, `Vietnamese`
 
 
 YouTube Music
 ==
-- feat(YouTube Music/Hide general ads): now patch hides new type of interstitial banner
-- fix(YouTube Music): some patches are broken in `v6.31.55+`
-- fix(YouTube Music/Enable old player layout): add version constraint (no longer available as legacy code has been completely removed in `v6.31.55+`)
-- fix(YouTube Music/Hide general ads): `interstitial ads` are closed too early
+- feat(YouTube Music): rename patch `Start page` → `Change start page`
+- fix(YouTube Music/Hide general ads): `Hide premium renewal banner` is not hidden properly https://github.com/inotia00/ReVanced_Extended/issues/1811
+- fix(YouTube Music/Remember video quality): video quality toast shows wrong quality value https://github.com/inotia00/ReVanced_Extended/issues/1808
 - feat(YouTube Music/Translations): update translation
-`French`, `Russian`, `Ukrainian`
+`Brazilian`, `French`, `Korean`, `Polish`, `Russian`, `Turkish`, `Ukrainian`, `Vietnamese`
 
-
-Reddit
-==
-- feat(Reddit): change patch name: `Hide place button` → `Hide toolbar button`
 
 Etc
 ==
