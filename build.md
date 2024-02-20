@@ -55,12 +55,12 @@ Etc
 
   
 **App Versions:**  
-Music-arm64 (arm64-v8a): 6.36.54
-downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-6-36-54-release/youtube-music-6-36-54-android-apk-download/)  
+Music-arm64 (arm64-v8a): 6.39.50
+downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-6-39-50-release/youtube-music-6-39-50-android-apk-download/)  
 Tiktok: 27.2.5
 downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
-YouTube: 19.03.35
-downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-19-03-35-release/youtube-19-03-35-android-apk-download/)  
+YouTube: 19.06.36
+downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-19-06-36-release/youtube-19-06-36-2-android-apk-download/)  
 
 Install [Vanced Microg](https://github.com/inotia00/VancedMicroG/releases) to be able to use non-root YouTube or Music  
 
