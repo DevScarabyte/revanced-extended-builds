@@ -1,47 +1,36 @@
 CLI: revanced-cli-4.6.0-all.jar.asc  
-Integrations: revanced-integrations-1.11.2.apk  
-Patches: revanced-patches-4.10.2.jar  
+Integrations: revanced-integrations-1.11.3.apk  
+Patches: revanced-patches-4.10.3.jar  
 
 YouTube
 ==
-- feat(YouTube): drop support version `19.17.41` ~ `19.26.42` https://github.com/inotia00/ReVanced_Extended/issues/2241
-- feat(YouTube): separate the `Bypass image region restrictions` patch from the `Alternative thumbnails` patch (Reflecting changes in ReVanced)
-- feat(YouTube/Alternative thumbnails): add support for more domains (Alternative domain) https://github.com/inotia00/revanced-integrations/pull/49
-- feat(YouTube/Custom branding icon): update old splash animation for `Revancify Red` and `Revancify Blue`
-- feat(YouTube/Overlay buttons): add `Mute Video` button https://github.com/inotia00/revanced-patches/pull/63
-- feat(YouTube/Player components): `Hide player popup panels` setting now hides the products panel (Contributed by @OxrxL) https://github.com/inotia00/ReVanced_Extended/issues/2236
-- feat(YouTube/Shorts components): add `Hide paused header` setting https://github.com/inotia00/ReVanced_Extended/issues/2213
-- feat(YouTube/Swipe controls): add `Enable save and restore brightness` setting (Reflecting changes in ReVanced) https://github.com/inotia00/ReVanced_Extended/issues/2232
-- fix(YouTube): restart dialog that appears when the user first installs the app restarts the app too quickly, so the new layout is not fetched (add a restart delay to resolve issues)
-- fix(YouTube/Alternative thumbnails): handle more thumbnails https://github.com/inotia00/revanced-integrations/pull/52
-- fix(YouTube/Disable forced auto captions): subtitles don't work after playing Shorts https://github.com/inotia00/ReVanced_Extended/issues/2202
+- feat(YouTube): add `Watch history` patch https://github.com/inotia00/ReVanced_Extended/issues/2275
+- feat(YouTube/Client spoof): update hardcoded client version
+- feat(YouTube/Description components): add `Hide Contents section` setting https://github.com/inotia00/ReVanced_Extended/issues/2262
+- feat(YouTube/Overlay buttons): add patch option `Change top buttons` https://github.com/inotia00/revanced-patches/pull/66
+- feat(YouTube/Player components): add `Hide zoom overlay` setting https://github.com/inotia00/revanced-patches/pull/67
+- feat(YouTube/Video playback): show AlertDialog when changing `Skip preloaded buffer` setting
+- fix(YouTube/Client spoof): some side effects of iOS client (No HDR video → HDR video is supported only on AV1 codec, Higher video qualities may not be available / Live streams not available on Android 8.0 → fixed) https://github.com/inotia00/ReVanced_Extended/issues/2261
+- fix(YouTube/Disable auto captions): turning on `Disable forced auto captions` will disable subtitles https://github.com/inotia00/ReVanced_Extended/issues/2267
+- fix(YouTube/Feed components): `Hide recommended videos` setting does not working in home feed https://github.com/inotia00/ReVanced_Extended/issues/2220
 - fix(YouTube/Hide feed components): `Hide carousel shelf` setting sometimes hides the Watch history in the You tab
-- fix(YouTube/Hide feed components): do not hide flyout menu https://github.com/ReVanced/revanced-integrations/pull/664
-- fix(YouTube/Miniplayer): change invalid string
-- fix(YouTube/Overlay buttons): add missing resources
-- fix(YouTube/Overlay buttons): change default value
-- fix(YouTube/Overlay buttons): remove used resources
-- fix(YouTube/SponsorBlock): skip segments when casting https://github.com/ReVanced/revanced-patches/pull/3331
-- fix(YouTube/Spoof client): delay when the video starts
-- fix(YouTube/Video playback): default video quality does not apply https://github.com/inotia00/ReVanced_Extended/issues/2157
-- refactor(YouTube/Overlay buttons): rename class, method, and resource files to be more appropriate
-- revert(YouTube/Hide feed components): `Hide expandable chip under videos` setting does not work (as support version has been rolled back to YouTube 19.16.39) https://github.com/inotia00/revanced-integrations/commit/2555ab31d16d103f56f0c7685c559258da8cc11e
+- fix(YouTube/SponsorBlock): the new SponsorBlock segment popup doesn't show minutes in the timestamp https://github.com/inotia00/ReVanced_Extended/issues/2263
+- fix(YouTube/Toolbar components): turning on the `Hide voice search button` setting makes the margin of the searchbar 0 https://github.com/inotia00/ReVanced_Extended/issues/2270
+- refactor(YouTube/Video information): no longer using Java Reflection to speed up method invoke
 - feat(YouTube/Translations): update translation
 
 
 YouTube Music
 ==
-- feat(YouTube Music): add `Alternative domain` patch https://github.com/inotia00/revanced-patches/pull/64
-- feat(YouTube Music): add support versions `7.08.54` ~ `7.10.51`
-- feat(YouTube Music): rename patch `Alternative domain` to `Bypass image region restrictions` (Reflecting changes in ReVanced)
+- feat(YouTube Music): add support version `7.10.52`
+- feat(YouTube Music/Hide layout components): add `Hide settings menu` setting https://github.com/inotia00/ReVanced_Extended/issues/1899
+- refactor(YouTube Music/Settings): fix unchecked cast
 - feat(YouTube Music/Translations): update translation
 
 
 Shared
 ==
-- feat(GmsCore support): add patch options `GmsCoreVendorGroupId`, `CheckGmsCore`, `PackageNameYouTube`, `PackageNameYouTubeMusic`
-- feat: merge the `Custom package name` patch into the `GmsCore support` patch https://github.com/inotia00/ReVanced_Extended/issues/1388
-- fix(Change version code): change to a universal patch, and changed the patch description https://github.com/inotia00/ReVanced_Extended/issues/2229
+- chore: improve patch descriptions https://github.com/inotia00/revanced-patches/pull/65
 
 
 Announcement
@@ -58,12 +47,12 @@ Contribute to translation
 - [YT Music](https://crowdin.com/project/revancedmusicextended)
   
 **App Versions:**  
-Music-arm64 (arm64-v8a): 7.10.51
-downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-7-10-51-release/youtube-music-7-10-51-android-apk-download/)  
 Tiktok: 27.2.5
 downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
-YouTube: 19.26.42
-downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-19-26-42-release/youtube-19-26-42-android-apk-download/)  
+Music-arm64 (arm64-v8a): 7.11.50
+downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-7-11-50-release/youtube-music-7-11-50-4-android-apk-download/)  
+YouTube: 19.29.40
+downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-19-29-40-release/youtube-19-29-40-android-apk-download/)  
 
 Install [Vanced Microg](https://github.com/inotia00/VancedMicroG/releases) to be able to use non-root YouTube or Music  
 
