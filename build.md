@@ -1,63 +1,59 @@
-CLI: revanced-cli-4.6.0-all.jar.asc  
+CLI: revanced-cli-5.0.0-all.jar.asc  
 Integrations: revanced-integrations-1.16.1.apk  
-Patches: revanced-patches-4.16.1.jar  
+Patches:   
 
 YouTube
 ==
-- chore(YouTube/InclusiveSpan): check in advance whether debug log is enabled to prevent unnecessary toString invokes
-- feat(YouTube/Description components): add `Hide AI-generated video summary section` setting https://github.com/inotia00/ReVanced_Extended/issues/2473
-- feat(YouTube/Hide ads): add `Hide player shopping shelf` setting https://github.com/inotia00/ReVanced_Extended/issues/2447
-- feat(YouTube/Hide feed components): add `Hide floating button` setting - [Screenshot](https://www.reddit.com/r/youtube/comments/1fq2bma/how_do_i_remove_this_button/)
-- feat(YouTube/Hide feed components): add debug logging
-- feat(YouTube/Seekbar components): add info to `Append timestamp information` summary about tapping the appended information https://github.com/inotia00/revanced-patches/pull/93
-- feat(YouTube/Shorts components): remove `Hide in watch history` setting
-- feat(YouTube/Spoof app version): remove obsolete 17.33.42 spoof target https://github.com/ReVanced/revanced-patches/pull/3825
-- feat(YouTube/Spoof app version): remove obsolete 19.13.37 spoof target https://github.com/inotia00/ReVanced_Extended/issues/2477
-- feat(YouTube/Spoof streaming data): add `iOS Compatibility mode` setting
-- feat(YouTube/Spoof streaming data): change default client to iOS
-- feat(YouTube/Spoof streaming data): update the hardcoded iOS client version (partial support for opus codec) https://github.com/inotia00/ReVanced_Extended/issues/2480
-- fix(YouTube/Hide feed components): `Hide carousel shelf` setting hides the library shelf
-- fix(YouTube/Litho filter): disable obfuscation
-- fix(YouTube/Overlay buttons): support A/B player layout
-- fix(YouTube/Return YouTube Dislike): height of the separator does not matchs https://github.com/inotia00/ReVanced_Extended/issues/2474
-- fix(YouTube/Settings): app crashes due to incorrect settings arrangement
-- fix(YouTube/Settings): remove duplicate descriptions
-- fix(YouTube/Settings): restart dialog appears twice when the app is first installed
-- fix(YouTube/Shorts components): Shorts shown in Home feed https://github.com/inotia00/ReVanced_Extended/issues/2467
-- fix(YouTube/Shorts components): `Hide Shorts shelves` setting sometimes hides shelves in the library tab
-- fix(YouTube/SponsorBlock): wrong segment behavior selected https://github.com/inotia00/ReVanced_Extended/issues/2468
-- fix(YouTube/Toolbar components): premium header not applied when `Hide YouTube Doodles` is turned on
-- fix(YouTube/Video playback): custom playback speed not working due to A/B tests https://github.com/ReVanced/revanced-patches/pull/3817
-- feat(YouTube/Translations): update translation
+- chore(YouTube - Spoof streaming data): Make strings consistent https://github.com/inotia00/revanced-patches/pull/95
+- feat(YouTube - Overlay buttons): Replace `time-ordered playlist` button with `play all` button https://github.com/inotia00/revanced-patches/pull/96
+- feat(YouTube - Spoof streaming data): No longer fetch additional player requests `videoDetails` https://github.com/inotia00/revanced-integrations/pull/59
+- feat(YouTube - Spoof streaming data): Rename the setting iOS Compatibility mode to Skip iOS livestream playback
+- feat(YouTube - Shorts components): Add `Hide in watch history` setting
+- fix(YouTube - Return YouTube Dislike): Show Shorts dislikes with new A/B button icons
+- fix(YouTube - Shorts components): Do not hide Shorts action buttons on app first launch
+- fix(YouTube - Spoof streaming data): Log out the iOS client to allow video playback https://github.com/inotia00/revanced-patches/pull/100
+- fix(YouTube - SponsorBlock): Fix create new segment crash on tablet custom roms https://github.com/inotia00/ReVanced_Extended/issues/2500
+- fix(YouTube - Video playback): Correctly set default quality when changing from a low quality video
+- refactor(YouTube - Hide feed components): Do not search path or buffer unless `Hide mix playlists` setting is enabled
+- refactor(YouTube - PlayerTypeHook): Use search queries instead of Views to determine whether a user is in search results or not
+- feat(YouTube - Translations): Update translation
 
 
 YouTube Music
 ==
-- fix(YouTube Music): app crashes on Android 5, 6 https://github.com/inotia00/ReVanced_Extended/issues/2449
-- feat(YouTube Music/Translations): update translation
+- feat(YouTube Music): add `Spoof client` patch https://github.com/inotia00/ReVanced_Extended/issues/2484
+- feat(YouTube Music - Hide ads): Changed the default value of `Hide fullscreen ads` setting to off and added a warning to the setting https://github.com/inotia00/ReVanced_Extended/issues/2515
+- feat(YouTube Music - Translations): Update translation
+
+
+Shared
+==
+- feat(Hide ads): Disable advertising id https://github.com/inotia00/revanced-patches/pull/97
+- fix(GmsCore support): Remove chimera reference, remove patch option `DisableGmsServiceBroker`, and revert `Cast service disabler` https://github.com/inotia00/revanced-patches/pull/97
+- refactor: Bump ReVanced Patcher to 21 & merge integrations by using ReVanced Patches Gradle plugin
 
 
 Announcement
 ==
+- **There is a change in `options.json`. If you see warnings related to patch options, remove the `options.json` file or `Patch options`.**
 - YouTube's support version has been rolled back to **19.16.39** for the following reasons: https://github.com/inotia00/ReVanced_Extended/issues/2241.
 - YouTube Music's support version has been rolled back to **7.16.53** for the following reasons: https://github.com/inotia00/ReVanced_Extended/issues/2382.
 - Reddit 2024.18.0+ can only be patched via [CLI](https://github.com/inotia00/revanced-documentation/blob/main/docs/latest-reddit-patch-info.md) or rvx-builder.
-- Compatible ReVanced Manager: [RVX Manager v1.22.2 (fork)](https://github.com/inotia00/revanced-manager/releases/tag/v1.22.2).
+- Compatible ReVanced Manager: [RVX Manager v1.23.4 (fork)](https://github.com/inotia00/revanced-manager/releases/tag/v1.23.4).
 
 
 Contribute to translation
 ==
 - [YouTube](https://crowdin.com/project/revancedextended)
 - [YT Music](https://crowdin.com/project/revancedmusicextended)
-
   
 **App Versions:**  
-Music-arm64 (arm64-v8a): 7.26.51                   
-downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-7-26-51-release/youtube-music-7-26-51-android-apk-download/)  
 Tiktok: 27.2.5
 downloaded from: [APKMirror - Tiktok](https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/tik-tok-including-musical-ly-27-2-5-release/tiktok-27-2-5-android-apk-download/)  
-YouTube: 19.45.34                   
-downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-19-45-34-release/youtube-19-45-34-2-android-apk-download/)  
+Music-arm64 (arm64-v8a): 7.28.52                   
+downloaded from: [APKMirror - Music-arm64 (arm64-v8a)](https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-7-28-52-release/youtube-music-7-28-52-android-apk-download/)  
+YouTube: 19.49.34                   
+downloaded from: [APKMirror - YouTube](https://www.apkmirror.com/apk/google-inc/youtube/youtube-19-49-34-release/youtube-19-49-34-2-android-apk-download/)  
 
 Install [Vanced Microg](https://github.com/inotia00/VancedMicroG/releases) to be able to use non-root YouTube or Music  
 
